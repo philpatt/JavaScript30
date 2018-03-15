@@ -32,16 +32,70 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
 
+    const fifteen = inventors.filter(function(inventor){
+      if(inventor.year >= 1500 && inventor.year <= 1599){
+        return true;
+      }
+    });
+    console.log(fifteen);
+
+// make your code DRY !!!!
+    const fifteen2 = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599);
+
+    console.log('D-R-Y',fifteen2);
+    
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+
+    const fullNames = inventors.map(function(inventor){
+      return (inventor.first + ' ' + inventor.last);
+    });
+    
+    console.log(fullNames);
+    // make your code DRY !!!!
+    const fullNames2 = inventors.map(inventor => inventor.first + ' '+inventor.last);
+
+    console.log('D-R-Y',fullNames2);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
+    const birthdate = inventors.sort(function(firstPerson, secondPerson){
+      if(firstPerson.year > secondPerson.year){
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    console.log(birthdate);
+
+    const birthdate2 = inventors.sort((firstPerson, secondPerson) => firstPerson.year > secondPerson.year ? 1 : -1);
+
+    console.log('DRY',birthdate2);
+    
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
 
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0);
+
+    console.log('inventors have lived',totalYears,'years');
+    
+
     // 5. Sort the inventors by years lived
+    console.table(inventors);
+    
+    const oldest = inventors.sort(function(a, b) {
+      const previous = a.passed - a.year;
+      const next = b.passed - b.year;
+      return previous > next ? -1 : 1;
+    });
+
+    console.table(oldest);
+    
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
