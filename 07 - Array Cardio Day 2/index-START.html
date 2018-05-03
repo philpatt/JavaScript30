@@ -51,16 +51,35 @@
 
     const allAdultsSecond = people.every(person => ((new Date()).getFullYear()) - person.year >= 19);
 
-    console.log(allAdultsFirst);
-    console.log(allAdultsSecond);
+    // console.log({ allAdultsFirst });
+    // console.log(allAdultsSecond);
     
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
 
+    const commentFirst = comments.find(function(comment){
+      if(comment.id === 823423){
+        return true;
+      }
+    });
+
+    const commentSecond = comments.find(comment => comment.id === 823423);
+    
+    // console.log(commentFirst);
+    // console.log(commentSecond);
+    
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const index = comments.findIndex(comment => comment.id === 823423);
+    console.log(comments[index], index)
+      console.log(comments);
+
+    comments.splice(index,1)
+    
+    console.log(comments);
+
 
   </script>
 </body>
